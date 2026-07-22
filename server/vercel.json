@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/*.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    { "src": "/api/health", "dest": "/api/health.js" },
+    { "src": "/api/auth/(.*)", "dest": "/api/auth.js" },
+    { "src": "/api/servers/(.*)", "dest": "/api/servers.js" },
+    { "src": "/api/channels/(.*)", "dest": "/api/channels.js" },
+    { "src": "/api/socket", "dest": "/api/socket.js" },
+    { "src": "/api/register", "dest": "/api/auth.js" },
+    { "src": "/api/login", "dest": "/api/auth.js" },
+    { "src": "/api/me", "dest": "/api/auth.js" }
+  ]
+}
