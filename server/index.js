@@ -27,7 +27,11 @@ app.get('/api/health', (req, res) => {
 });
 
 // Mount API routes
+// Auth routes available at both /api/auth/* and direct /api/register, /api/login, /api/me
 app.use('/api/auth', authRoutes);
+app.post('/api/register', (req, res, next) => { req.url = '/register'; next(); }, authRoutes);
+app.post('/api/login', (req, res, next) => { req.url = '/login'; next(); }, authRoutes);
+app.get('/api/me', (req, res, next) => { req.url = '/me'; next(); }, authRoutes);
 app.use('/api/servers', serverRoutes);
 app.use('/api/channels', channelRoutes);
 
